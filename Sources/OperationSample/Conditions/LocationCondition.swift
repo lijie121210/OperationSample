@@ -154,7 +154,7 @@ private class LocationPermissionOperation: AnyOperation {
 
 extension LocationPermissionOperation: CLLocationManagerDelegate {
     
-    fileprivate func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if manager == self.manager, isExecuting, status != .notDetermined {
             finish()
         }
