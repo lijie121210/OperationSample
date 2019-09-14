@@ -50,6 +50,10 @@ public extension NSError {
         }
         self.init(domain: OperationErrorDomain, code: code.rawValue, userInfo: dicts)
     }
+    
+    func userInfo(for key: OperationError.UserInfoKey) -> Any? {
+        return userInfo[key.rawValue]
+    }
 }
 
 // This makes it easy to compare an `NSError.code` to an `OperationErrorCode`.
