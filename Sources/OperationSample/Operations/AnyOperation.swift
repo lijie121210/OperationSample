@@ -32,6 +32,19 @@ open class AnyOperation: Operation {
         return ["state"]
     }
     
+    open class override func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
+        var keyPaths = super.keyPathsForValuesAffectingValue(forKey: key)
+        
+        switch key {
+        case "isReady", "isExecuting", "isFinished":
+            keyPaths.insert("state")
+        default:
+            break
+        }
+        
+        return keyPaths
+    }
+    
     open var isUserInitiated: Bool {
         get { qualityOfService == .userInitiated }
         set {
