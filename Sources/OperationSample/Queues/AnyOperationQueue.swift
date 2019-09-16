@@ -89,9 +89,9 @@ open class AnyOperationQueue: OperationQueue {
             let exclusivityController = ExclusivityController.default
             exclusivityController.addOperation(operation, categories: concurrencyCategories)
             
-            let blockObserver = BlockObserver(startHandler: { (oper) in
+            let blockObserver = BlockObserver(startHandler: nil, produceHandler: nil) { (oper, _) in
                 exclusivityController.removeOperation(oper, categories: concurrencyCategories)
-            })
+            }
             operation.addObserver(blockObserver)
         }
         
