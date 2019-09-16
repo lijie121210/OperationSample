@@ -21,7 +21,7 @@ public struct TimeoutObserver: OperationObserver {
     
     // MARK: Initialization
 
-    init(_ timeout: TimeInterval) {
+    public init(_ timeout: TimeInterval) {
         self.timeout = timeout
     }
     
