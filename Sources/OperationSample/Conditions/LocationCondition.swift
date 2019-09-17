@@ -41,7 +41,7 @@ public struct LocationCondition: OperationCondition {
     }
     
     public func dependency(for operation: AnyOperation) -> Operation? {
-        nil
+        LocationPermissionOperation(usage: usage)
     }
     
     public func evaluate(for operation: AnyOperation, completion: (Result<Void, NSError>) -> Void) {

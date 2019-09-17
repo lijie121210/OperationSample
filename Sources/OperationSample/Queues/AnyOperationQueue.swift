@@ -102,4 +102,19 @@ open class AnyOperationQueue: OperationQueue {
         */
         operation.willEnqueue()
     }
+    
+    open override func addOperations(_ ops: [Operation], waitUntilFinished wait: Bool) {
+        /*
+            The base implementation of this method does not call `addOperation()`,
+            so we'll call it ourselves.
+        */
+        for op in ops {
+            addOperation(op)
+        }
+        if wait {
+            for op in ops {
+                op.waitUntilFinished()
+            }
+        }
+    }
 }
